@@ -3,7 +3,7 @@
 Team:
 
 * Katrine - Service
-* Person 2 - Which microservice?
+* Seth Porche - Sales
 
 ## Design
 
@@ -15,3 +15,6 @@ The Service functionality keeps track of service appointments for automobiles an
 
 Explain your models and integration with the inventory
 microservice, here.
+
+
+I am adding these changes for testing purposes.
