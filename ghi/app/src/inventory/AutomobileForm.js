@@ -6,7 +6,7 @@ function AutomobileForm() {
     color: "",
     year: "",
     vin: "",
-    model_id: "",
+    model: "",
   });
   const fetchData = async () => {
     const url = "http://localhost:8100/api/models/";
@@ -37,7 +37,7 @@ function AutomobileForm() {
         color: "",
         year: "",
         vin: "",
-        model_id: "",
+        model: "",
       });
     }
   };
@@ -106,10 +106,10 @@ function AutomobileForm() {
                   className="form-select"
                 >
                   <option value="">Choose A Model</option>
-                  {models.map((models) => {
+                  {models.map((model) => {
                     return (
-                      <option key={models.id} value={models.id}>
-                        {models.model_id}
+                      <option key={model.id} value={model.id}>
+                        {model.name}
                       </option>
                     );
                   })}
