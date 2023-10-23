@@ -57,7 +57,7 @@ function VehicleModelForm() {
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
           <h1>Create a new vehicle model</h1>
-          <form onSubmit={handleSubmit} id="create-shoe-form">
+          <form onSubmit={handleSubmit} id="create-model-form">
             <div className="form-floating mb-3">
               <input
                 value={formData.picture_url}
@@ -111,4 +111,4 @@ function VehicleModelForm() {
   );
 }
 
-export default ShoeForm;
+export default VehicleModelForm;
