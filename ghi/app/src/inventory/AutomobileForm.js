@@ -85,7 +85,7 @@ function AutomobileForm() {
               </div>
               <div className="form-floating mb-3">
                 <input
-                  value={formData.color}
+                  value={formData.vin}
                   onChange={handleFormChange}
                   placeholder="VIN"
                   required
