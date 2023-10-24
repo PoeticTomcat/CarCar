@@ -17,7 +17,7 @@ def get_auto_vo():
     url = "http://localhost:8100/api/automobiles/"
     response = requests.get(url)
     content = json.loads(response.content)
-    for automobile in content["autos"]:
+    for auto in content["autos"]:
         try:
             obj, created = AutomobileVO.objects.update_or_create(
                 import_href=auto["vin"],
