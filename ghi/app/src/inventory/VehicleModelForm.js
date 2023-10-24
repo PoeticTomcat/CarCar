@@ -5,7 +5,7 @@ function VehicleModelForm() {
   const [formData, setFormData] = useState({
     name: "",
     picture_url: "",
-    manufacturer: "",
+    manufacturer_id: "",
   });
 
   const fetchData = async () => {
@@ -37,7 +37,7 @@ function VehicleModelForm() {
       setFormData({
         name: "",
         picture_url: "",
-        manufacturer: "",
+        manufacturer_id: "",
       });
     }
   };
@@ -86,11 +86,11 @@ function VehicleModelForm() {
             </div>
             <div className="mb-3">
               <select
-                value={formData.manufacturer}
+                value={formData.manufacturer_id}
                 onChange={handleFormChange}
                 required
-                name="manufacturer"
-                id="manufacturer"
+                name="manufacturer_id"
+                id="manufacturer_id"
                 className="form-select"
               >
                 <option value="">Choose a manufacturer</option>

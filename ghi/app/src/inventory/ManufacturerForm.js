@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function ManufacturerForm() {
-  const [manufacturers, setManufacturers] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -42,7 +41,7 @@ function ManufacturerForm() {
           <form onSubmit={handleSubmit} id="create-manufacturer-form">
             <div className="form-floating mb-3">
               <input
-                defaultValue={formData.name}
+                value={formData.name}
                 onChange={handleFormChange}
                 placeholder="Manufacturer Name"
                 required
@@ -52,12 +51,12 @@ function ManufacturerForm() {
                 className="form-control"
               />
               <label htmlFor="name">Name</label>
-              <button className="btn btn-primary">Create</button>
             </div>
-                  </form>
-            </div>
-          </div>
+            <button className="btn btn-primary">Create</button>
+          </form>
         </div>
+      </div>
+    </div>
   );
 }
 

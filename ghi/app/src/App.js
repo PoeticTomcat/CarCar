@@ -8,6 +8,7 @@ import VehicleModelList from "./inventory/VehicleModelList";
 import ManufacturerList from "./inventory/ManufacturerList";
 import ManufacturerForm from "./inventory/ManufacturerForm";
 
+
 function App() {
   return (
     <BrowserRouter>
