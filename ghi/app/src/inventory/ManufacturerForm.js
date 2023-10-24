@@ -1,23 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 function ManufacturerForm() {
-  const [manufacturers, setManufacturers] = useState([]);
   const [formData, setFormData] = useState({
+    id: "",
     name: "",
   });
-
-  const fetchData = async () => {
-    const url = "http://localhost:8100/api/manufacturers/";
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      setManufacturers(data.manufacturers);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +20,7 @@ function ManufacturerForm() {
 
     if (response.ok) {
       setFormData({
+        id: "",
         name: "",
       });
     }
@@ -61,17 +49,17 @@ function ManufacturerForm() {
                 placeholder="Manufacturer Name"
                 required
                 type="text"
-                name="manufacturer_name"
-                id="manufacturer_name"
+                name="name"
+                id="name"
                 className="form-control"
               />
               <label htmlFor="name">Name</label>
-              <button className="btn btn-primary">Create</button>
             </div>
-                  </form>
-            </div>
-          </div>
+            <button className="btn btn-primary">Create</button>
+          </form>
         </div>
+      </div>
+    </div>
   );
 }
 

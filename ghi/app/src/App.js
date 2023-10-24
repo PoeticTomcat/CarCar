@@ -6,6 +6,8 @@ import AutomobileList from "./inventory/AutomobileList";
 import VehicleModelForm from "./inventory/VehicleModelForm";
 import VehicleModelList from "./inventory/VehicleModelList";
 import ManufacturerList from "./inventory/ManufacturerList";
+import ManufacturerForm from "./inventory/ManufacturerForm";
+
 
 function App() {
   return (
