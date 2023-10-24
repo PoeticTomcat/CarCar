@@ -56,7 +56,7 @@ function VehicleModelForm() {
     <div className="row">
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
-          <h1>Create a new vehicle model</h1>
+          <h1>Create a vehicle model</h1>
           <form onSubmit={handleSubmit} id="create-model-form">
             <div className="form-floating mb-3">
               <input
