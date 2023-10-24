@@ -6,19 +6,6 @@ function ManufacturerForm() {
     name: "",
   });
 
-  const fetchData = async () => {
-    const url = "http://localhost:8100/api/manufacturers/";
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      setManufacturers(data.manufacturers);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = "http://localhost:8100/api/manufacturers/";
@@ -30,7 +17,6 @@ function ManufacturerForm() {
       },
     };
     const response = await fetch(url, fetchConfig);
-
     if (response.ok) {
       setFormData({
         name: "",
@@ -61,8 +47,8 @@ function ManufacturerForm() {
                 placeholder="Manufacturer Name"
                 required
                 type="text"
-                name="manufacturer_name"
-                id="manufacturer_name"
+                name="name"
+                id="name"
                 className="form-control"
               />
               <label htmlFor="name">Name</label>
