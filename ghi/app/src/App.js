@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import AutomobileForm from "./inventory/AutomobileForm";
 import AutomobileList from "./inventory/AutomobileList";
 import VehicleModelForm from "./inventory/VehicleModelForm";
+import VehicleModelList from "./inventory/VehicleModelList";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="models/new/" element={<VehicleModelForm />} />
-          <Route path="automobiles" element={<AutomobileList />} />
+          <Route path="models/" element={<VehicleModelList />} />
           <Route path="automobiles/new/" element={<AutomobileForm />} />
         </Routes>
       </div>
