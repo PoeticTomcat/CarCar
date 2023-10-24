@@ -6,7 +6,7 @@ function AutomobileForm() {
     color: "",
     year: "",
     vin: "",
-    model: "",
+    model_id: "",
   });
   const fetchData = async () => {
     const url = "http://localhost:8100/api/models/";
@@ -37,7 +37,7 @@ function AutomobileForm() {
         color: "",
         year: "",
         vin: "",
-        model: "",
+        model_id: "",
       });
     }
   };
@@ -101,8 +101,8 @@ function AutomobileForm() {
                   value={formData.model_id}
                   onChange={handleFormChange}
                   required
-                  name="model"
-                  id="model"
+                  name="model_id"
+                  id="model_id"
                   className="form-select"
                 >
                   <option value="">Choose A Model</option>
