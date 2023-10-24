@@ -6,7 +6,7 @@ function AutomobileForm() {
     color: "",
     year: "",
     vin: "",
-    model_id: "",
+    model: "",
   });
   const fetchData = async () => {
     const url = "http://localhost:8100/api/models/";
@@ -37,7 +37,7 @@ function AutomobileForm() {
         color: "",
         year: "",
         vin: "",
-        model_id: "",
+        model: "",
       });
     }
   };
@@ -85,7 +85,7 @@ function AutomobileForm() {
               </div>
               <div className="form-floating mb-3">
                 <input
-                  value={formData.color}
+                  value={formData.vin}
                   onChange={handleFormChange}
                   placeholder="VIN"
                   required
@@ -106,27 +106,14 @@ function AutomobileForm() {
                   className="form-select"
                 >
                   <option value="">Choose A Model</option>
-                  {models.map((models) => {
+                  {models.map((model) => {
                     return (
-                      <option key={models.id} value={models.id}>
-                        {models.model_id}
+                      <option key={model.id} value={model.id}>
+                        {model.name}
                       </option>
                     );
                   })}
                 </select>
-              </div>
-              <div className="form-floating mb-3">
-                <input
-                  value={formData.picture_url}
-                  onChange={handleFormChange}
-                  placeholder="Picture_URL"
-                  required
-                  type="url"
-                  name="picture_url"
-                  id="picture_url"
-                  className="form-control"
-                />
-                <label htmlFor="picture_url">Image URL</label>
               </div>
               <button className="btn btn-primary">Create</button>
             </form>
