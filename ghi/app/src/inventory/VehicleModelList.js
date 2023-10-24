@@ -35,41 +35,44 @@ function VehicleModelList() {
   }
 
   return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Manufacturer</th>
-          <th>Picture</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {models.map((model, index) => {
-          return (
-            <tr key={index}>
-              <td>{model.name}</td>
-              <td>{model.manufacturer.name}</td>
-              <td>
-                <img
-                  src={model.picture_url}
-                  className="img-thumbnail"
-                  style={{ height: "70px", width: "70px" }}
-                />
-              </td>
-              <td>
-                <button
-                  onClick={() => handleClick(model.id)}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <div>
+      <h1>Models</h1>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Manufacturer</th>
+            <th>Picture</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {models.map((model, index) => {
+            return (
+              <tr key={index}>
+                <td>{model.name}</td>
+                <td>{model.manufacturer.name}</td>
+                <td>
+                  <img
+                    src={model.picture_url}
+                    className="img-thumbnail"
+                    style={{ height: "70px", width: "70px" }}
+                  />
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleClick(model.id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
