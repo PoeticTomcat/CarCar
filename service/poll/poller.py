@@ -13,7 +13,7 @@ django.setup()
 from service_rest.models import AutomobileVO
 
 def get_auto_vo():
-    url = "http://localhost:8100/api/automobiles/"
+    url = "http://inventory-api:8100/api/automobiles/"
     response = requests.get(url)
     content = json.loads(response.content)
     for auto in content["automobiles"]:
