@@ -1,10 +1,14 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
 class AutomobileVO(models.Model):
-    vin = models.CharField(max_length=200)
-    sold = models.CharField(max_length=200)
+    vin = models.CharField(max_length=17, unique=True)
+    sold = models.BooleanField(default=False)
+
+    def get_api_url(self):
+        return reverse("api_automobile", kwargs={"vin": self.vin})
 
 
 class Technician(models.Model):
@@ -15,9 +19,9 @@ class Technician(models.Model):
 
 class Appointment(models.Model):
     date_time = models.DateTimeField()
-    reason = models.CharField(max_length=200)
-    status = models.CharField(max_length=200)
-    vin = models.CharField(max_length=200)
+    reason = models.CharField(max_length=100)
+    status = models.CharField(max_length=100)
+    vin = models.CharField(max_length=17, unique=True)
     customer = models.CharField(max_length=200)
     technician = models.ForeignKey(
         Technician,
