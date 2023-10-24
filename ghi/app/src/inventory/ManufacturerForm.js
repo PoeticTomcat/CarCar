@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function ManufacturerForm() {
   const [formData, setFormData] = useState({
-    id: "",
     name: "",
   });
 
@@ -20,7 +19,6 @@ function ManufacturerForm() {
 
     if (response.ok) {
       setFormData({
-        id: "",
         name: "",
       });
     }
@@ -44,7 +42,7 @@ function ManufacturerForm() {
           <form onSubmit={handleSubmit} id="create-manufacturer-form">
             <div className="form-floating mb-3">
               <input
-                defaultValue={formData.name}
+                value={formData.name}
                 onChange={handleFormChange}
                 placeholder="Manufacturer Name"
                 required
