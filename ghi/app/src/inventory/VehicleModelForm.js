@@ -89,8 +89,8 @@ function VehicleModelForm() {
                 value={formData.manufacturer_id}
                 onChange={handleFormChange}
                 required
-                name="manufacturer"
-                id="manufacturer"
+                name="manufacturer_id"
+                id="manufacturer_id"
                 className="form-select"
               >
                 <option value="">Choose a manufacturer</option>
