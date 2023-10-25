@@ -41,6 +41,7 @@ class AppointmentEncoder(ModelEncoder):
 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_list_technicians(request):
+    print("hello Jay")
     if request.method == "GET":
         technicians = Technician.objects.all()
         return JsonResponse(

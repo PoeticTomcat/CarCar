@@ -13,11 +13,10 @@ django.setup()
 from service_rest.models import AutomobileVO
 
 def get_auto_vo():
-    url = "http://inventory-api:8100/api/automobiles/"
+    url = "http://project-beta-inventory-api-1:8000/api/automobiles/"
     response = requests.get(url)
     content = json.loads(response.content)
-    for auto in content["automobiles"]:
-        print(auto)
+    for auto in content["autos"]:
         try:
             obj, created = AutomobileVO.objects.update_or_create(
                 vin=auto["vin"],
@@ -28,7 +27,7 @@ def get_auto_vo():
                 }
             )
             if created:
-                print("Created an auto VO object", obj)
+                print("Created an auto VO", obj)
             else:
                 print("Updated, obj")
         except:
@@ -40,10 +39,9 @@ def poll(repeat=True):
         print('Service poller polling for data')
         try:
             get_auto_vo()
-            pass
 
         except Exception as e:
-            print(e, file=sys.stderr)
+            print("error: ", e, file=sys.stderr)
 
         if (not repeat):
             break
