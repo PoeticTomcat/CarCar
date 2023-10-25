@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "sales_rest.apps.SalesRestConfig"
+    "sales_rest.apps.SalesRestConfig",
 ]
 
 MIDDLEWARE = [
@@ -47,6 +47,7 @@ MIDDLEWARE = [
 
 ALLOWED_HOSTS = [
     "localhost",
+    "project-beta-inventory-api-1",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

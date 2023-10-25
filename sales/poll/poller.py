@@ -14,17 +14,16 @@ from sales_rest.models import AutomobileVO
 
 
 def get_auto_vo():
-    url = "http://localhost:8100/api/automobiles/"
+    url = "http://project-beta-inventory-api-1:8000/api/automobiles/"
     response = requests.get(url)
     content = json.loads(response.content)
     for auto in content["autos"]:
+        print(auto)
         try:
             obj, created = AutomobileVO.objects.update_or_create(
-                import_href=auto["vin"],
+                vin=auto["vin"],
                 defaults={
-                    "vin": auto["vin"],
                     "sold": auto["sold"],
-                    "id": auto["id}"]
                     },
             )
             if created:
