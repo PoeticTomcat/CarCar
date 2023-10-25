@@ -39,7 +39,7 @@ class AppointmentEncoder(ModelEncoder):
     }
 
 
-@require_http_methods(["DELETE", "GET", "PUT"])
+@require_http_methods(["DELETE", "POST", "GET", "PUT"])
 def api_list_technicians(request):
     print("hello Jay")
     if request.method == "GET":
@@ -101,7 +101,13 @@ def api_list_appointments(request):
     else:
         try:
             content = json.loads(request.body)
+
+            employee_id = content["technician"]
+            technician = Technician.objects.get(employee_id=employee_id)
+            content["technician"] = technician
+
             appointment = Appointment.objects.create(**content)
+
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,
