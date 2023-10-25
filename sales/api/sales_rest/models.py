@@ -26,7 +26,7 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    phone_number = models.PositiveSmallIntegerField()
+    phone_number = models.IntegerField()
 
     def get_api_url(self):
         return reverse("api_customer", kwargs={"pk": self.pk})
@@ -41,17 +41,17 @@ class Customer(models.Model):
 class Sale(models.Model):
     automobile = models.ForeignKey(
         AutomobileVO,
-        related_name="autos",
+        related_name="sales",
         on_delete=models.PROTECT,
     )
     salesperson = models.ForeignKey(
         Salesperson,
-        related_name="salesperson",
+        related_name="sales",
         on_delete=models.PROTECT,
     )
     customer = models.ForeignKey(
         Customer,
-        related_name="customer",
+        related_name="sales",
         on_delete=models.PROTECT,
     )
     price = models.PositiveIntegerField()

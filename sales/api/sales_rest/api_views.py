@@ -2,35 +2,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from common.json import ModelEncoder
 from .models import AutomobileVO, Salesperson, Sale, Customer
-
-
-class AutomobileVODetailEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = ["vin", "sold"]
-
-
-class SalespersonListEncoder(ModelEncoder):
-    model = Salesperson
-    properties = [
-        "first_name",
-        "last_name",
-        "employee_id",
-    ]
-
-
-class CustomerListEncoder(ModelEncoder):
-    model = Customer
-    properties = ["first_name", "last_name", "address", "phone_number"]
-
-
-class SalesListEncoder(ModelEncoder):
-    model = Sale
-    properties = ["automobile", "salesperson", "customer", "price"]
-
-    # def get_extra_data(self, o):
-    #     return {"location": o.location.closet_name}
+from .encoders import CustomerListEncoder
+from .encoders import SalesListEncoder, SalespersonListEncoder
 
 
 @require_http_methods(["GET", "POST"])
@@ -118,12 +92,34 @@ def api_sales(request):
         return JsonResponse({"sales": sales}, encoder=SalesListEncoder)
     else:
         content = json.loads(request.body)
-        sales = Sale.objects.create(**content)
-        return JsonResponse(
-            sales,
-            encoder=SalesListEncoder,
-            safe=False,
-        )
+        print("request.body: ", request.body)
+        print(content)
+        try:
+            vin = content["automobile"]
+            automobile = AutomobileVO.objects.get(vin=vin)
+            print(automobile)
+            content["automobile"] = automobile
+
+            employee_id = content["salesperson"]
+            salesperson = Salesperson.objects.get(pk=employee_id)
+            content["salesperson"] = salesperson
+
+            last_name = content["customer"]
+            customer = Customer.objects.get(last_name=last_name)
+            content["customer"] = customer
+
+            sales = Sale.objects.create(**content)
+            return JsonResponse(
+                sales,
+                encoder=SalesListEncoder,
+                safe=False,
+            )
+
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid sale credentials"},
+                status=400,
+            )
 
 
 @require_http_methods(["GET", "DELETE"])

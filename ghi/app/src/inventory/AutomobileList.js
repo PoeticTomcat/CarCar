@@ -40,7 +40,11 @@ function AutomobileList() {
               <td>{automobile.year}</td>
               <td>{automobile.model.name}</td>
               <td>{automobile.model.manufacturer.name}</td>
+<<<<<<< HEAD
               <td>{JSON.stringify( JSON.stringify(automobile.sold)) }</td>
+=======
+              <td>{JSON.stringify(automobile.sold)}</td>
+>>>>>>> origin
             </tr>
           );
         })}
