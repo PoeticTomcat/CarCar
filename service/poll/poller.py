@@ -23,7 +23,6 @@ def get_auto_vo():
                 defaults={
                     "vin": auto["vin"],
                     "sold": auto["sold"],
-                    "id": auto["id"]
                 }
             )
             if created:
