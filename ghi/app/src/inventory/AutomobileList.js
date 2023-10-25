@@ -11,21 +11,6 @@ function AutomobileList() {
     }
   };
 
-  //   async function handleClick(e, automobileId {
-  //     const request = await fetch(`http://localhost:8090/api/automobiles/${automobileId}`, {
-  //     method: "DELETE",
-  //     });
-
-  //     const resp = await request.json();
-
-  //     if (resp.deleted) {
-  //       alert("Deleted Item");
-  //       fetchData();
-  //     } else {
-  //       alert("Could Not Delete Item");
-  //     }
-  //   }
-
     useEffect(() => {
       fetchData();
     }, []);
@@ -55,7 +40,7 @@ function AutomobileList() {
               <td>{automobile.year}</td>
               <td>{automobile.model.name}</td>
               <td>{automobile.model.manufacturer.name}</td>
-              <td>{ JSON.stringify(automobile.sold) }</td>
+              <td>{JSON.stringify( JSON.stringify(automobile.sold)) }</td>
             </tr>
           );
         })}
