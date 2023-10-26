@@ -34,11 +34,11 @@ function Nav() {
                 </NavLink>
               <ul className="dropdown-menu">
                 <li><NavLink className="dropdown-item" to="/technicians/">Technicians</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/technicians/new/">Add a Technician</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/technicians/new/">→ Add a Technician</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><NavLink className="dropdown-item" to="/appointments/">Appointments</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/appointments/new/">Make an Appointment</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/appointments/history/">Service History</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/appointments/new/">→ Make an Appointment</NavLink></li>
               </ul>
             </li>
           </ul>

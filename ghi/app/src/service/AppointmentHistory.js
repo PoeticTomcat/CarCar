@@ -1,34 +1,47 @@
 import React, { useEffect, useState } from "react";
 
 function AppointmentHistory() {
-    const [appointments, setApointments] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+  const [formData, setFormData] = useState({
+    searchVin: ""
+  });
+
   const fetchData = async () => {
     const url = "http://localhost:8080/api/appointments/";
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
-      setApointments(data.appointments);
+      setAppointments(data.appointments);
     }
   };
-
-  async function handleClick(id) {
-    const response = await fetch(
-      `http://localhost:8080/api/appointments/${id}/`,
-      {
-        method: "PUT",
-      }
-    );
-    if (response.ok) {
-      alert("Updated appointment");
-      fetchData();
-    } else {
-      alert("Could not update appointment");
-    }
-  }
 
   useEffect(() => {
     fetchData();
   }, []);
+
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    const filteredAppointments = appointments.filter((appointment) => {
+      return appointment.vin.includes(formData.searchVin);
+    });
+    setAppointments(filteredAppointments);
+
+    if (!filteredAppointments) {
+      alert("No appointments match this search, please try again...");
+    }
+  }
+
+  const handleFormChange = (e) => {
+    const value = e.target.value;
+    const inputName = e.target.name;
+
+    setFormData({
+      ...formData,
+      [inputName]: value,
+    });
+  };
 
   if (!appointments) {
     return <div>Loading appointments...</div>;
@@ -36,7 +49,23 @@ function AppointmentHistory() {
 
   return (
     <div>
-      <h1>Appointment History</h1>
+      <h1>Service History</h1>
+      <div>
+        <form className="d-flex" role="search" onSubmit={handleSearch} id="search-vins">
+          <input
+            value={formData.searchVin}
+            onChange={handleFormChange}
+            name="searchVin"
+            className="form-control me-2"
+            type="search"
+            placeholder="Search by VIN..."
+            aria-label="Search"
+          />
+          <button className="btn btn-outline-success" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -59,7 +88,10 @@ function AppointmentHistory() {
                 <td>{appointment.customer}</td>
                 <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
                 <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
-                <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
+                <td>
+                  {appointment.technician.first_name}{" "}
+                  {appointment.technician.last_name}
+                </td>
                 <td>{appointment.reason}</td>
                 <td>{appointment.status}</td>
               </tr>
@@ -70,4 +102,4 @@ function AppointmentHistory() {
     </div>
   );
 }
-export default AppointmentHistory
+export default AppointmentHistory;

@@ -126,7 +126,7 @@ function AppointmentForm() {
               />
               <label htmlFor="time">Time</label>
             </div>
-            <div className="mb-3">
+            <div className="form-floating mb-3">
               <select
                 value={formData.technician}
                 onChange={handleFormChange}
@@ -147,6 +147,7 @@ function AppointmentForm() {
                   );
                 })}
               </select>
+              <label htmlFor="technician">Technician</label>
             </div>
             <div className="form-floating mb-3">
               <input
