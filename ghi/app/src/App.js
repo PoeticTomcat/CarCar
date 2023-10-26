@@ -9,6 +9,9 @@ import ManufacturerList from "./inventory/ManufacturerList";
 import ManufacturerForm from "./inventory/ManufacturerForm";
 import TechnicianForm from "./service/TechnicianForm";
 import TechnicianList from "./service/TechnicianList";
+import AppointmentForm from "./service/AppointmentForm";
+import AppointmentList from "./service/AppointmentList";
+import AppointmentHistory from "./service/AppointmentHistory";
 
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
           <Route path="manufacturers/new/" element={<ManufacturerForm />} />
           <Route path="technicians/" element={<TechnicianList />} />
           <Route path="technicians/new/" element={<TechnicianForm />} />
+          <Route path="appointments/" element={<AppointmentList />} />
+          <Route path="appointments/new/" element={<AppointmentForm />} />
+          <Route path="appointments/history/" element={<AppointmentHistory />} />
           </Routes>
       </div>
     </BrowserRouter>

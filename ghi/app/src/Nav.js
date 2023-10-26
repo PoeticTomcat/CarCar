@@ -38,7 +38,7 @@ function Nav() {
                 <li><hr className="dropdown-divider" /></li>
                 <li><NavLink className="dropdown-item" to="/appointments/">Appointments</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/appointments/new/">Make an Appointment</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/appointments/new/">Service History</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/appointments/history/">Service History</NavLink></li>
               </ul>
             </li>
           </ul>
