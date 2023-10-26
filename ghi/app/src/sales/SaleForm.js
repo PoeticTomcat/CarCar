@@ -49,7 +49,7 @@ function SaleForm() {
     const url = "http://localhost:8090/api/sales/";
     const fetchConfig = {
       method: "post",
-      body: JSON.stringify(formData,{sold: true}),
+      body: JSON.stringify(formData),
       headers: {
         "Content-Type": "application/json",
       },
@@ -59,7 +59,16 @@ function SaleForm() {
       const response = await fetch(url, fetchConfig);
 
       if (response.ok) {
-        console.log("Sale created successfully!");
+        const autosUrl = `http://localhost:8100/api/automobiles/${formData.automobile}/`;
+        const autoSoldConfig = {
+          method: "put",
+          body: JSON.stringify({ sold: true }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+
+        const autoSoldResponse = await fetch(autosUrl, autoSoldConfig);
         setFormData({
           salesperson: "",
           customer: "",
