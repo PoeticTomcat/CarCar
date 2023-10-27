@@ -7,6 +7,13 @@ import VehicleModelForm from "./inventory/VehicleModelForm";
 import VehicleModelList from "./inventory/VehicleModelList";
 import ManufacturerList from "./inventory/ManufacturerList";
 import ManufacturerForm from "./inventory/ManufacturerForm";
+import CustomerForm from "./sales/CustomerForm";
+import CustomerList from "./sales/CustomerList"
+import SalespersonForm from "./sales/SalespersonForm";
+import SalespersonList from "./sales/SalespersonList";
+import SalespersonHistory from "./sales/SalespersonHistory";
+import SalesList from "./sales/SalesList";
+import SaleForm from "./sales/SaleForm";
 import TechnicianForm from "./service/TechnicianForm";
 import TechnicianList from "./service/TechnicianList";
 import AppointmentForm from "./service/AppointmentForm";
@@ -27,12 +34,7 @@ function App() {
           <Route path="automobiles/new/" element={<AutomobileForm />} />
           <Route path="automobiles" element={<AutomobileList />} />
           <Route path="manufacturers/new/" element={<ManufacturerForm />} />
-          <Route path="technicians/" element={<TechnicianList />} />
-          <Route path="technicians/new/" element={<TechnicianForm />} />
-          <Route path="appointments/" element={<AppointmentList />} />
-          <Route path="appointments/new/" element={<AppointmentForm />} />
-          <Route path="appointments/history/" element={<AppointmentHistory />} />
-        </Routes>
+          </Routes>
       </div>
     </BrowserRouter>
   );
