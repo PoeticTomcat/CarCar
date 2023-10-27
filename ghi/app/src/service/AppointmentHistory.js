@@ -17,7 +17,7 @@ function AppointmentHistory() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [formData.searchVin]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
