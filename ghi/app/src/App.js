@@ -32,7 +32,7 @@ function App() {
           <Route path="appointments/" element={<AppointmentList />} />
           <Route path="appointments/new/" element={<AppointmentForm />} />
           <Route path="appointments/history/" element={<AppointmentHistory />} />
-          </Routes>
+        </Routes>
       </div>
     </BrowserRouter>
   );
