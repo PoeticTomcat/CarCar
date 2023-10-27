@@ -40,7 +40,7 @@ function AutomobileList() {
               <td>{automobile.year}</td>
               <td>{automobile.model.name}</td>
               <td>{automobile.model.manufacturer.name}</td>
-              <td>{JSON.stringify(automobile.sold)}</td>
+              <td>{automobile.sold ? "Yes" : "No"}</td>
             </tr>
           );
         })}

@@ -28,8 +28,9 @@ def api_list_technicians(request):
             response = JsonResponse(
                 {"message": "Could not create technician"}
             )
-            response.status_code=400
+            response.status_code = 400
             return response
+
 
 @require_http_methods(["DELETE", "GET"])
 def api_view_technician(request, employee_id):
@@ -43,7 +44,7 @@ def api_view_technician(request, employee_id):
             )
         except Technician.DoesNotExist:
             response = JsonResponse({"message": "Does not exist"})
-            response.status_code=404
+            response.status_code = 404
             return response
     else:
         try:
@@ -57,6 +58,7 @@ def api_view_technician(request, employee_id):
         except Technician.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
 
+
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
     if request.method == "GET":
@@ -65,6 +67,7 @@ def api_list_appointments(request):
             {"appointments": appointments},
             encoder=AppointmentEncoder,
         )
+
     else:
         try:
             content = json.loads(request.body)
@@ -72,6 +75,9 @@ def api_list_appointments(request):
             employee_id = content["technician"]
             technician = Technician.objects.get(employee_id=employee_id)
             content["technician"] = technician
+
+            if AutomobileVO.objects.filter(vin=content["vin"], sold=True):
+                content["is_vip"] = True
 
             appointment = Appointment.objects.create(**content)
 
@@ -84,8 +90,9 @@ def api_list_appointments(request):
             response = JsonResponse(
                 {"message": "Could not create appointment"}
             )
-            response.status_code=400
+            response.status_code = 400
             return response
+
 
 @require_http_methods(["GET", "DELETE", "PUT"])
 def api_view_appointment(request, pk):
@@ -101,7 +108,7 @@ def api_view_appointment(request, pk):
             response = JsonResponse(
                 {"message": "Could not view appointment"}
             )
-            response.status_code=400
+            response.status_code = 400
             return response
     elif request.method == "DELETE":
         try:
@@ -116,7 +123,7 @@ def api_view_appointment(request, pk):
             response = JsonResponse(
                 {"message": "Could not delete appointment"}
             )
-            response.status_code=400
+            response.status_code = 400
             return response
     else:
         content = json.loads(request.body)
@@ -136,6 +143,7 @@ def api_view_appointment(request, pk):
             encoder=AppointmentEncoder,
             safe=False,
         )
+
 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_view_automobile(request, vin):
@@ -162,7 +170,7 @@ def api_view_automobile(request, vin):
             )
         except AutomobileVO.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
-    else: # PUT
+    else:
         try:
             content = json.loads(request.body)
             auto = AutomobileVO.objects.get(vin=vin)
