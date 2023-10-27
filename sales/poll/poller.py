@@ -18,7 +18,6 @@ def get_auto_vo():
     response = requests.get(url)
     content = json.loads(response.content)
     for auto in content["autos"]:
-        print(auto)
         try:
             obj, created = AutomobileVO.objects.update_or_create(
                 vin=auto["vin"],

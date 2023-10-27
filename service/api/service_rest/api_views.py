@@ -9,7 +9,6 @@ from .api_encoders import TechnicianEncoder, AppointmentEncoder, AutomobileVOEnc
 
 @require_http_methods(["DELETE", "POST", "GET", "PUT"])
 def api_list_technicians(request):
-    print("hello Jay")
     if request.method == "GET":
         technicians = Technician.objects.all()
         return JsonResponse(
