@@ -22,24 +22,24 @@ The poller microservice updates the AutomobileVO every 60 seconds with updated V
 
 ### Models:
 * AutomobileVO:
-    vin = CharField(max_length=17, unique=True)
-    sold = BooleanField(default=False)
+    * vin = CharField(max_length=17, unique=True)
+    * sold = BooleanField(default=False)
 
 * Technician:
-    first_name = CharField(max_length=200)
-    last_name = CharField(max_length=200)
-    employee_id = CharField(max_length=200)
+    * first_name = CharField(max_length=200)
+    * last_name = CharField(max_length=200)
+    * employee_id = CharField(max_length=200)
 
 * Appointment:
-    date_time = DateTimeField()
-    reason = CharField(max_length=100)
-    status = CharField(max_length=10, default="open")
-    vin = CharField(max_length=17)
-        _Note: This is NOT a ForeignKey to the AutomobileVO._
-    customer = CharField(max_length=200)
-    technician = ForeignKey(Technician, on_delete=models.PROTECT)
-    is_vip = BooleanField(default=False)
-        _Note: This variable changes to True if an automobile exists in our inventory AND has the sold value = False._
+    * date_time = DateTimeField()
+    * reason = CharField(max_length=100)
+    * status = CharField(max_length=10, default="open")
+    * vin = CharField(max_length=17)
+        :warning:  _This is NOT a ForeignKey to the AutomobileVO._
+    * customer = CharField(max_length=200)
+    * technician = ForeignKey(Technician, on_delete=models.PROTECT)
+    * is_vip = BooleanField(default=False)
+        :warning: _This variable changes to True if an automobile exists in our inventory AND has the sold value = False._
 
 
 
@@ -60,7 +60,7 @@ POST Technicians: http://localhost:8080/api/technicians/
 ```
 {
 	"first_name": "Yoshi",
-	"last_name": "Bergersen",
+	"last_name": "Montalbano",
 	"employee_id": "Y123"
 }
 ```
@@ -69,20 +69,20 @@ POST Appointment: http://localhost:8080/api/appointments/
 ```
 {
 	"date_time": "2023-10-26T15:39:55.616Z",
-	"reason": "Definitiely too much dog hair",
+	"reason": "Cleaning up dog hair",
 	"status": "open",
-	"vin": "beepboop",
-	"customer": "Domino",
-	"technician": "S123"
+	"vin": "DOGGO54321",
+	"customer": "Domino Lombardo",
+	"technician": "Y123"
 }
 ```
-PUT Appointment=["cancelled"]: http://localhost:8080/api/appointments/33/cancel/
+PUT Appointment=["cancelled"]: http://localhost:8080/api/appointments/{appointment id}/cancel/
 ```
 {
 	"status": "cancelled"
 }
 ```
-PUT Appointment=["finished"]: http://localhost:8080/api/appointments/1/finish/
+PUT Appointment=["finished"]: http://localhost:8080/api/appointments/{appointment id}/finish/
 ```
 {
 	"status": "finished"
