@@ -202,6 +202,36 @@ function Nav() {
                     ‣ Make an Appointment
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/salespeople/">
+                    Salespeople
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/salespeople/new">
+                    Add a new salesperson
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/customers/">
+                    Customers
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/customers/new">
+                    Add a new customer
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/sales/">
+                    Sales
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/sales/new">
+                    Add a new sale
+                  </NavLink>
+                </li>
               </ul>
             </li>
           </ul>
