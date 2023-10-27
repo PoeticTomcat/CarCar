@@ -92,16 +92,13 @@ def api_sales(request):
         return JsonResponse({"sales": sales}, encoder=SalesListEncoder)
     else:
         content = json.loads(request.body)
-        print("request.body: ", request.body)
-        print(content)
         try:
             vin = content["automobile"]
             automobile = AutomobileVO.objects.get(vin=vin)
-            print(automobile)
             content["automobile"] = automobile
 
             employee_id = content["salesperson"]
-            salesperson = Salesperson.objects.get(pk=employee_id)
+            salesperson = Salesperson.objects.get(employee_id=employee_id)
             content["salesperson"] = salesperson
 
             last_name = content["customer"]
@@ -109,6 +106,12 @@ def api_sales(request):
             content["customer"] = customer
 
             sales = Sale.objects.create(**content)
+
+            if sales.automobile:
+                related_automobile = sales.automobile
+                related_automobile.sold = True
+                related_automobile.save()
+
             return JsonResponse(
                 sales,
                 encoder=SalesListEncoder,

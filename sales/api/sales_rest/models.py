@@ -13,7 +13,7 @@ class Salesperson(models.Model):
     employee_id = models.IntegerField()
 
     def get_api_url(self):
-        return reverse("api_salesperson", kwargs={"pk": self.pk})
+        return reverse("api_salesperson", kwargs={"employee_id": self.employee_id})
 
     def __str__(self):
         return f"{self.employee_id} - {self.first_name}/{self.last_name}"
@@ -32,7 +32,9 @@ class Customer(models.Model):
         return reverse("api_customer", kwargs={"pk": self.pk})
 
     def __str__(self):
-        return f"{self.first_name} - {self.last_name}/{self.address}/{self.phone_number}"
+        return (
+            f"{self.first_name} - {self.last_name}/{self.address}/{self.phone_number}"
+        )
 
     class Meta:
         ordering = ("first_name", "last_name", "address", "phone_number")
