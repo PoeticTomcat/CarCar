@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function AppointmentHistory() {
   const [appointments, setAppointments] = useState([]);
   const [formData, setFormData] = useState({
-    searchVin: ""
+    searchVin: "",
   });
 
   const fetchData = async () => {
@@ -19,7 +19,6 @@ function AppointmentHistory() {
     fetchData();
   }, []);
 
-
   const handleSearch = async (e) => {
     e.preventDefault();
 
@@ -31,7 +30,7 @@ function AppointmentHistory() {
     if (!filteredAppointments) {
       alert("No appointments match this search, please try again...");
     }
-  }
+  };
 
   const handleFormChange = (e) => {
     const value = e.target.value;
@@ -50,8 +49,13 @@ function AppointmentHistory() {
   return (
     <div>
       <h1>Service History</h1>
-      <div>
-        <form className="d-flex" role="search" onSubmit={handleSearch} id="search-vins">
+      <div className="mb-4">
+        <form
+          className="d-flex"
+          role="search"
+          onSubmit={handleSearch}
+          id="search-vins"
+        >
           <input
             value={formData.searchVin}
             onChange={handleFormChange}
@@ -84,7 +88,7 @@ function AppointmentHistory() {
             return (
               <tr key={index}>
                 <td>{appointment.vin}</td>
-                <td>{appointment.sold}</td>
+                <td>{appointment.is_vip ? "Yes" : "No"}</td>
                 <td>{appointment.customer}</td>
                 <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
                 <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>

@@ -11,21 +11,6 @@ function VehicleModelList() {
     }
   };
 
-  async function handleClick(modelId) {
-    const response = await fetch(
-      `http://localhost:8100/api/models/${modelId}`,
-      {
-        method: "DELETE",
-      }
-    );
-    if (response.ok) {
-      alert("Delete Item");
-      fetchData();
-    } else {
-      alert("Could Not Delete Item");
-    }
-  }
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -43,7 +28,6 @@ function VehicleModelList() {
             <th>Name</th>
             <th>Manufacturer</th>
             <th>Picture</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -56,16 +40,8 @@ function VehicleModelList() {
                   <img
                     src={model.picture_url}
                     className="img-thumbnail"
-                    style={{ height: "70px", width: "70px" }}
+                    style={{ height: "90px", width: "120px" }}
                   />
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleClick(model.id)}
-                    className="btn btn-danger"
-                  >
-                    Delete
-                  </button>
                 </td>
               </tr>
             );
