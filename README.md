@@ -20,10 +20,30 @@ The RESTful API for each service accommodates POST and GET endpoints for creatin
 
 The poller microservice updates the AutomobileVO every 60 seconds with updated VINs from the Inventory service.
 
-## Sales microservice
+### Models:
+* AutomobileVO:
+    vin = CharField(max_length=17, unique=True)
+    sold = BooleanField(default=False)
 
-Explain your models and integration with the inventory
-microservice, here.
+* Technician:
+    first_name = CharField(max_length=200)
+    last_name = CharField(max_length=200)
+    employee_id = CharField(max_length=200)
+
+* Appointment:
+    date_time = DateTimeField()
+    reason = CharField(max_length=100)
+    status = CharField(max_length=10, default="open")
+    vin = CharField(max_length=17)
+        _Note: This is NOT a ForeignKey to the AutomobileVO._
+    customer = CharField(max_length=200)
+    technician = ForeignKey(Technician, on_delete=models.PROTECT)
+    is_vip = BooleanField(default=False)
+        _Note: This variable changes to True if an automobile exists in our inventory AND has the sold value = False._
+
+
+
+## Sales microservice
 
 Order of model creation:
 -AutomobileVO: vin and sold
@@ -36,7 +56,7 @@ The models I will be creating for the Sales microservice are AutomobileVO, Custo
 
 ## Helpful API endpoint information
 
-POST Technicians:
+POST Technicians: http://localhost:8080/api/technicians/
 ```
 {
 	"first_name": "Yoshi",
@@ -45,7 +65,7 @@ POST Technicians:
 }
 ```
 
-POST Appointment:
+POST Appointment: http://localhost:8080/api/appointments/
 ```
 {
 	"date_time": "2023-10-26T15:39:55.616Z",
@@ -56,13 +76,13 @@ POST Appointment:
 	"technician": "S123"
 }
 ```
-PUT Appointment=["cancelled"]:
+PUT Appointment=["cancelled"]: http://localhost:8080/api/appointments/33/cancel/
 ```
 {
 	"status": "cancelled"
 }
 ```
-PUT Appointment=["finished"]:
+PUT Appointment=["finished"]: http://localhost:8080/api/appointments/1/finish/
 ```
 {
 	"status": "finished"
