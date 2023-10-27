@@ -65,6 +65,7 @@ def api_list_appointments(request):
             {"appointments": appointments},
             encoder=AppointmentEncoder,
         )
+
     else:
         try:
             content = json.loads(request.body)
@@ -72,6 +73,9 @@ def api_list_appointments(request):
             employee_id = content["technician"]
             technician = Technician.objects.get(employee_id=employee_id)
             content["technician"] = technician
+
+            if AutomobileVO.objects.filter(vin=content["vin"], sold=True):
+                content["is_vip"] = True
 
             appointment = Appointment.objects.create(**content)
 
@@ -162,7 +166,7 @@ def api_view_automobile(request, vin):
             )
         except AutomobileVO.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
-    else: # PUT
+    else:
         try:
             content = json.loads(request.body)
             auto = AutomobileVO.objects.get(vin=vin)

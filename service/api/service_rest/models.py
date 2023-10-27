@@ -7,7 +7,6 @@ class AutomobileVO(models.Model):
     sold = models.BooleanField(default=False)
 
 
-
 class Technician(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
@@ -25,3 +24,4 @@ class Appointment(models.Model):
         related_name="appointments",
         on_delete=models.PROTECT,
     )
+    is_vip = models.BooleanField(default=False)
