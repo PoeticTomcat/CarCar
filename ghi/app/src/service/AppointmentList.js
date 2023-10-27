@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function AppointmentList() {
   const [appointments, setAppointments] = useState([]);
+  const [autos, setAutos] = useState([])
   const [vipStatus, setVipStatus] = useState({});
 
   const fetchData = async () => {
@@ -11,20 +12,41 @@ function AppointmentList() {
       console.log("The response isn't working");
     } else {
       const data = await response.json();
+      console.log(data)
       setAppointments(data.appointments);
     }
   };
 
+  const fetchAutoData = async () => {
+    const autoUrl = "http://localhost:8100/api/automobiles/";
+    const response = await fetch(autoUrl)
+    if (!response.ok) {
+      console.log("The auto response isn't working");
+    } else {
+      const autoData = await response.json();
+      const soldAutos = autoData.autos.find((car) => car["sold"] = true);
+      setAutos(autoData.soldAutos)
+    }
+  }
+
   const fetchVipStatus = async () => {
     const vipStatusData = {};
     for (const appointment of appointments) {
-      const url = `http://localhost:8100/api/automobiles/${appointment.vin}/`;
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        vipStatusData[appointment.vin] = "Yes";
-      } else {
-        vipStatusData[appointment.vin] = "No";
+      try {
+        const url = `http://localhost:8100/api/automobiles/${appointment.vin}/`;
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.sold === true) {
+            vipStatusData[appointment.vin] = "Yes";
+          } else {
+            vipStatusData[appointment.vin] = "No";
+          }
+        } else {
+          vipStatusData[appointment.vin] = "No";
+        }
+      } catch (error) {
+
       }
     }
     setVipStatus(vipStatusData);
@@ -70,11 +92,13 @@ function AppointmentList() {
 
   useEffect(() => {
     fetchData();
+    fetchAutoData();
   }, []);
 
   useEffect(() => {
     if (appointments) {
       fetchVipStatus();
+      fetchAutoData();
     }
   }, [appointments]);
 
@@ -111,7 +135,9 @@ function AppointmentList() {
                 <td>{appointment.customer}</td>
                 <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
                 <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
-                <td>{appointment.technician.first_name} {appointment.technician.last_name}
+                <td>
+                  {appointment.technician.first_name}{" "}
+                  {appointment.technician.last_name}
                 </td>
                 <td>{appointment.reason}</td>
                 <td>
