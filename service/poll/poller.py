@@ -1,4 +1,3 @@
-from service_rest.models import AutomobileVO
 import django
 import os
 import sys
@@ -10,6 +9,8 @@ sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "service_project.settings")
 django.setup()
 
+# Import models from service_rest, here. Ignore vs-code error hinting
+from service_rest.models import AutomobileVO
 
 def get_auto_vo():
     url = "http://project-beta-inventory-api-1:8000/api/automobiles/"
