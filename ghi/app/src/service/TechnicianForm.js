@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function TechnicianForm() {
   const [formData, setFormData] = useState({
@@ -38,9 +39,10 @@ function TechnicianForm() {
   };
 
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
+    <div className="container">
+      <div className="row">
+        <div className="col-md-8 offset-md-2">
+          <div className="shadow p-4 mt-4">
           <h1>Add a Technician</h1>
           <form onSubmit={handleSubmit} id="create-technician-form">
             <div className="form-floating mb-3">
@@ -87,6 +89,14 @@ function TechnicianForm() {
         </div>
       </div>
     </div>
+    <div className="col-md-8 offset-md-2 mt-3">
+      <div className="d-flex justify-content-center">
+        <Link to="/technicians/">
+          <button type="button" className="btn btn-outline-secondary">See all technicians</button>
+        </Link>
+      </div>
+    </div>
+  </div>
   );
 }
 

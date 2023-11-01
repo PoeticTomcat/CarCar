@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function AppointmentList() {
   const [appointments, setAppointments] = useState([]);
@@ -65,54 +66,66 @@ function AppointmentList() {
   );
 
   return (
-    <div>
-      <h1>Appointments</h1>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Vin</th>
-            <th>Is VIP?</th>
-            <th>Customer</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Technician</th>
-            <th>Reason</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {openAppointments.map((appointment, index) => {
-            return (
-              <tr key={index}>
-                <td>{appointment.vin}</td>
-                <td>{appointment.is_vip ? "Yes" : "No"}</td>
-                <td>{appointment.customer}</td>
-                <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
-                <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
-                <td>
-                  {appointment.technician.first_name}{" "}
-                  {appointment.technician.last_name}
-                </td>
-                <td>{appointment.reason}</td>
-                <td>
-                  <button
-                    onClick={() => handleCancel(appointment.id)}
-                    className="btn btn-danger"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={() => handleFinish(appointment.id)}
-                    className="btn btn-success"
-                  >
-                    Finish
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <div className="container text-left">
+      <div className="container-fluid">
+        <div className="row-auto">
+          <div className="col">
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Open Appointments</h1>
+              <div>
+                <Link to="/appointments/new/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">+</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">+ Book an appointment</button>
+                </Link>
+                <Link to="/appointments/history/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">⏱</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">⏱ Appointment history</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Vin</th>
+              <th>VIP?</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Technician</th>
+              <th>Reason</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {openAppointments.map((appointment, index) => {
+              return (
+                <tr key={index}>
+                  <td>{appointment.vin}</td>
+                  <td>{appointment.is_vip ? "Yes" : "No"}</td>
+                  <td>{appointment.customer}</td>
+                  <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
+                  <td>{new Date(appointment.date_time).toLocaleTimeString([],{hour: "2-digit", minute: "2-digit"})}</td>
+                  <td>
+                    {appointment.technician.first_name}{" "}
+                    {appointment.technician.last_name}
+                  </td>
+                  <td>{appointment.reason}</td>
+                  <td>
+                    <div className="d-flex">
+                      <button onClick={() => handleCancel(appointment.id)} className="btn btn-danger d-none d-lg-inline">Cancel</button>
+                      <button onClick={() => handleCancel(appointment.id)} className="btn btn-danger d-lg-none d-md-inline">✗</button>
+                      <button onClick={() => handleFinish(appointment.id)} className="btn btn-success d-none d-lg-inline">Finish</button>
+                      <button onClick={() => handleFinish(appointment.id)} className="btn btn-success d-lg-none d-md-inline">✓</button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function TechnicianList() {
   const [technicians, setTechnicians] = useState([]);
@@ -20,8 +21,19 @@ function TechnicianList() {
   }
 
   return (
-    <div>
-      <h1>Technicians</h1>
+    <div className="container text-left">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Technicians</h1>
+              <Link to="/technicians/new/" className="text-decoration-none">
+                <button type="button" className="btn btn-outline-primary d-md-none">+</button>
+                <button type="button" className="btn btn-outline-primary d-none d-md-inline">+ Add a new technician</button>
+              </Link>
+            </div>
+          </div>
+        </div>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -42,6 +54,7 @@ function TechnicianList() {
           })}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }

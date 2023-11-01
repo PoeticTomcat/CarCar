@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function AppointmentForm() {
   const [technicians, setTechnicians] = useState([]);
@@ -69,101 +70,113 @@ function AppointmentForm() {
   };
 
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
-          <h1>Create a service appointment</h1>
-          <form onSubmit={handleSubmit} id="create-appointment-form">
-            <div className="form-floating mb-3">
-              <input
-                value={formData.vin}
-                onChange={handleFormChange}
-                placeholder="Vin"
-                required
-                type="text"
-                name="vin"
-                id="vin"
-                className="form-control"
-              />
-              <label htmlFor="vin">Vin</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                value={formData.customer}
-                onChange={handleFormChange}
-                placeholder="Customer"
-                required
-                type="text"
-                name="customer"
-                id="customer"
-                className="form-control"
-              />
-              <label htmlFor="customer">Customer</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                value={formData.date}
-                onChange={handleFormChange}
-                placeholder="Date"
-                required
-                type="date"
-                name="date"
-                id="date"
-                className="form-control"
-              />
-              <label htmlFor="date">Date</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                value={formData.time}
-                onChange={handleFormChange}
-                placeholder="Time"
-                required
-                type="time"
-                name="time"
-                id="time"
-                className="form-control"
-              />
-              <label htmlFor="time">Time</label>
-            </div>
-            <div className="form-floating mb-3">
-              <select
-                value={formData.technician}
-                onChange={handleFormChange}
-                required
-                name="technician"
-                id="technician"
-                className="form-select"
-              >
-                <option value="">Choose a technician</option>
-                {technicians.map((technician) => {
-                  return (
-                    <option
-                      key={technician.employee_id}
-                      value={technician.employee_id}
-                    >
-                      {technician.first_name} {technician.last_name}
-                    </option>
-                  );
-                })}
-              </select>
-              <label htmlFor="technician">Technician</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                value={formData.reason}
-                onChange={handleFormChange}
-                placeholder="Reason"
-                required
-                type="text"
-                name="reason"
-                id="reason"
-                className="form-control"
-              />
-              <label htmlFor="reason">Reason</label>
-            </div>
-            <button className="btn btn-primary">Create</button>
-          </form>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-8 offset-md-2">
+          <div className="shadow p-4 mt-4">
+            <h1>Book an appointment</h1>
+            <form onSubmit={handleSubmit} id="create-appointment-form">
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.vin}
+                  onChange={handleFormChange}
+                  placeholder="Vin"
+                  required
+                  type="text"
+                  name="vin"
+                  id="vin"
+                  className="form-control"
+                />
+                <label htmlFor="vin">Vin</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.customer}
+                  onChange={handleFormChange}
+                  placeholder="Customer"
+                  required
+                  type="text"
+                  name="customer"
+                  id="customer"
+                  className="form-control"
+                />
+                <label htmlFor="customer">Customer</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.date}
+                  onChange={handleFormChange}
+                  placeholder="Date"
+                  required
+                  type="date"
+                  name="date"
+                  id="date"
+                  className="form-control"
+                />
+                <label htmlFor="date">Date</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.time}
+                  onChange={handleFormChange}
+                  placeholder="Time"
+                  required
+                  type="time"
+                  name="time"
+                  id="time"
+                  className="form-control"
+                />
+                <label htmlFor="time">Time</label>
+              </div>
+              <div className="form-floating mb-3">
+                <select
+                  value={formData.technician}
+                  onChange={handleFormChange}
+                  required
+                  name="technician"
+                  id="technician"
+                  className="form-select"
+                >
+                  <option value="">Choose a technician</option>
+                  {technicians.map((technician) => {
+                    return (
+                      <option
+                        key={technician.employee_id}
+                        value={technician.employee_id}
+                      >
+                        {technician.first_name} {technician.last_name}
+                      </option>
+                    );
+                  })}
+                </select>
+                <label htmlFor="technician">Technician</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.reason}
+                  onChange={handleFormChange}
+                  placeholder="Reason"
+                  required
+                  type="text"
+                  name="reason"
+                  id="reason"
+                  className="form-control"
+                />
+                <label htmlFor="reason">Reason</label>
+              </div>
+              <button className="btn btn-primary">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div className="col-md-8 offset-md-2 mt-3">
+        <div className="d-flex justify-content-center">
+          <Link to="/appointments/">
+            <button type="button" className="btn btn-outline-secondary">Open appointments</button>
+          </Link>
+          <Link to="/appointments/history/">
+            <button type="button" className="btn btn-outline-secondary">Past appointments</button>
+          </Link>
         </div>
       </div>
     </div>
