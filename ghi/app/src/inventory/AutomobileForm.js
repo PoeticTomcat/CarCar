@@ -54,9 +54,9 @@ function AutomobileForm() {
   return (
     <div className="container">
       <div className="row">
-        <div className="offset-3 col-6">
+        <div className="col-md-6 offset-md-3">
           <div className="shadow p-4 mt-4">
-            <h1>Create a new automobile</h1>
+            <h1>Create an automobile</h1>
             <form onSubmit={handleSubmit} id="create-auto-form">
               <div className="form-floating mb-3">
                 <input
@@ -122,7 +122,7 @@ function AutomobileForm() {
         </div>
       </div>
       <div className="row justify-content-md-center">
-        <div className="offset-3 col mt-3">
+        <div className="col-auto d-flex justify-content-center mt-3">
           <Link to="/automobiles/">
             <button type="button" className="btn btn-outline-primary">See all automobiles</button>
           </Link>

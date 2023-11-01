@@ -22,13 +22,18 @@ function VehicleModelList() {
 
   return (
     <div className="container text-left">
-      <div className="row">
-        <div className="col"><h1>Models</h1></div>
-        <div className="col-md-auto">
-          <Link to="/models/new/">
-            <button type="button" className="btn btn-outline-primary">+ Add a new model</button>
-          </Link></div>
-      </div>
+      <div className="constainer-fluid">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Models</h1>
+              <Link to="/models/new/" className="text-decoration-none">
+                <button type="button" className="btn btn-outline-primary d-md-none">+</button>
+                <button type="button" className="btn btn-outline-primary d-none d-md-inline">+ Add a new model</button>
+              </Link>
+            </div>
+          </div>
+        </div>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -56,6 +61,7 @@ function VehicleModelList() {
         </tbody>
       </table>
     </div>
+  </div>
   );
 }
 

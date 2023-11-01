@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function VehicleModelForm() {
   const [manufacturers, setManufacturers] = useState([]);
@@ -63,7 +64,7 @@ function VehicleModelForm() {
 
   return (
     <div className="row">
-      <div className="offset-3 col-6">
+      <div className="col-md-8 offset-md-2">
         <div className="shadow p-4 mt-4">
           <h1>Create a vehicle model</h1>
           <form onSubmit={handleSubmit} id="create-model-form">
@@ -114,6 +115,13 @@ function VehicleModelForm() {
             </div>
             <button className="btn btn-primary">Create</button>
           </form>
+        </div>
+      </div>
+      <div className="col-md-8 offset-md-2 mt-3">
+        <div className="d-flex justify-content-center">
+          <Link to="/models/">
+            <button type="button" className="btn btn-outline-secondary">See all models</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ function AutomobileList() {
               <h1>Automobiles</h1>
               <Link to="/automobiles/new/" className="text-decoration-none">
                 <button type="button" className="btn btn-outline-primary d-md-none">+</button>
-                <button type="button" className="btn btn-outline-primary d-none d-md-inline">Add a new automobile</button>
+                <button type="button" className="btn btn-outline-primary d-none d-md-inline">+ Add a new automobile</button>
               </Link>
             </div>
           </div>

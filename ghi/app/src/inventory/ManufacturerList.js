@@ -29,7 +29,7 @@ function ManufacturerList() {
               <h1>Manufacturers</h1>
               <Link to="/manufacturers/new/" className="text-decoration-none">
                 <button type="button" className="btn btn-outline-primary d-md-none">+</button>
-                <button type="button" className="btn btn-outline-primary d-none d-md-inline">Add a new manufacturer</button>
+                <button type="button" className="btn btn-outline-primary d-none d-md-inline">+ Add a new manufacturer</button>
               </Link>
             </div>
           </div>
