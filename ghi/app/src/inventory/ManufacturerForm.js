@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function ManufacturerForm() {
   const [formData, setFormData] = useState({
@@ -34,26 +35,35 @@ function ManufacturerForm() {
   };
 
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
-          <h1>Create a manufacturer</h1>
-          <form onSubmit={handleSubmit} id="create-manufacturer-form">
-            <div className="form-floating mb-3">
-              <input
-                value={formData.name}
-                onChange={handleFormChange}
-                placeholder="Manufacturer Name"
-                required
-                type="text"
-                name="name"
-                id="name"
-                className="form-control"
-              />
-              <label htmlFor="name">Name</label>
-            </div>
-            <button className="btn btn-primary">Create</button>
-          </form>
+    <div className="container">
+      <div className="row">
+        <div className="offset-3 col-6">
+          <div className="shadow p-4 mt-4">
+            <h1>Create a manufacturer</h1>
+            <form onSubmit={handleSubmit} id="create-manufacturer-form">
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.name}
+                  onChange={handleFormChange}
+                  placeholder="Manufacturer Name"
+                  required
+                  type="text"
+                  name="name"
+                  id="name"
+                  className="form-control"
+                />
+                <label htmlFor="name">Name</label>
+              </div>
+              <button className="btn btn-primary">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div className="row justify-content-md-center">
+        <div className="offset-3 col mt-3">
+          <Link to="/manufacturers/">
+            <button type="button" className="btn btn-outline-primary">See all manufacturers</button>
+          </Link>
         </div>
       </div>
     </div>

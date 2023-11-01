@@ -55,7 +55,7 @@ function AutomobileForm() {
       <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Create A New Automobile</h1>
+            <h1>Create a new automobile</h1>
             <form onSubmit={handleSubmit} id="create-auto-form">
               <div className="form-floating mb-3">
                 <input

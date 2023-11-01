@@ -28,24 +28,35 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="models/new/" element={<VehicleModelForm />} />
-          <Route path="models/" element={<VehicleModelList />} />
+
           <Route path="manufacturers/" element={<ManufacturerList />} />
-          <Route path="automobiles/new/" element={<AutomobileForm />} />
-          <Route path="automobiles" element={<AutomobileList />} />
           <Route path="manufacturers/new/" element={<ManufacturerForm />} />
+
+          <Route path="models/" element={<VehicleModelList />} />
+          <Route path="models/new/" element={<VehicleModelForm />} />
+
+          <Route path="automobiles/" element={<AutomobileList />} />
+          <Route path="automobiles/new/" element={<AutomobileForm />} />
+
+
           <Route path="technicians/" element={<TechnicianList />} />
           <Route path="technicians/new/" element={<TechnicianForm />} />
+
           <Route path="appointments/" element={<AppointmentList />} />
-          <Route path="appointments/new/" element={<AppointmentForm />} />
           <Route path="appointments/history/" element={<AppointmentHistory />} />
+          <Route path="appointments/new/" element={<AppointmentForm />} />
+
+
+          <Route path="customers/" element={<CustomerList />} />
           <Route path="customers/new/" element={<CustomerForm />} />
-          <Route path="customers" element={<CustomerList />} />
-          <Route path="salespeople/new/" element={<SalespersonForm />} />
-          <Route path="salespeople" element={<SalespersonList />} />
+
+          <Route path="salespeople/" element={<SalespersonList />} />
           <Route path="sales/history" element={<SalespersonHistory />} />
+          <Route path="salespeople/new/" element={<SalespersonForm />} />
+
+          <Route path="sales/" element={<SalesList />} />
           <Route path="sales/new" element={<SaleForm />} />
-          <Route path="sales" element={<SalesList />} />
+
         </Routes>
       </div>
     </BrowserRouter>

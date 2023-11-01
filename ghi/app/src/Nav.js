@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 function Nav() {
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
       <div className="container-fluid">
@@ -11,15 +12,15 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manufacturers</NavLink>
+            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manufacturers</NavLink>
               <ul className="dropdown-menu">
-                <li><NavLink className="dropdown-item" aria-current="page" to="/manufacturers/"> Manufacturers</NavLink></li>
+                <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/manufacturers/">All Manufacturers</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><NavLink className="dropdown-item" aria-current="page" to="/manufacturers/new/">‣ Add a manufacturer</NavLink></li>
+                <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/manufacturers/new">‣ Add a manufacturer</NavLink></li>
               </ul>
             </li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Models</NavLink>
+            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Models</NavLink>
               <ul className="dropdown-menu">
                 <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/models/">Models</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
@@ -27,15 +28,15 @@ function Nav() {
               </ul>
             </li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Automobiles</NavLink>
+            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Automobiles</NavLink>
               <ul className="dropdown-menu">
                 <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/automobiles/">Automobiles</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
-                <li className="nav-item"> <NavLink className="dropdown-item" aria-current="page" to="/automobiles/new/">‣ Add an auto </NavLink></li>
+                <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/automobiles/new/">‣ Add an auto </NavLink></li>
               </ul>
             </li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Technicians</NavLink>
+            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Technicians</NavLink>
               <ul className="dropdown-menu">
                 <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/technicians/" >Technicians</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
@@ -43,7 +44,7 @@ function Nav() {
               </ul>
             </li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Appointments</NavLink>
+            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Appointments</NavLink>
               <ul className="dropdown-menu">
                 <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/appointments/">Appointments</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
@@ -52,7 +53,7 @@ function Nav() {
               </ul>
             </li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Salespeople</NavLink>
+            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Salespeople</NavLink>
               <ul className="dropdown-menu">
                 <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/salespeople/">Salespeople</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
@@ -61,7 +62,7 @@ function Nav() {
               </ul>
             </li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Customers</NavLink>
+            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Customers</NavLink>
               <ul className="dropdown-menu">
                 <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/customers/">Customers</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
@@ -69,7 +70,7 @@ function Nav() {
               </ul>
             </li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sales</NavLink>
+            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sales</NavLink>
               <ul className="dropdown-menu">
                 <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/sales/">Sales</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>

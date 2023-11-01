@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function VehicleModelList() {
   const [models, setModels] = useState([]);
@@ -20,8 +21,14 @@ function VehicleModelList() {
   }
 
   return (
-    <div>
-      <h1>Models</h1>
+    <div className="container text-left">
+      <div className="row">
+        <div className="col"><h1>Models</h1></div>
+        <div className="col-md-auto">
+          <Link to="/models/new/">
+            <button type="button" className="btn btn-outline-primary">+ Add a new model</button>
+          </Link></div>
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>

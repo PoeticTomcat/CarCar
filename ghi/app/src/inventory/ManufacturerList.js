@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ManufacturerList() {
   const [manufacturers, setManufacturers] = useState([]);
@@ -16,28 +17,40 @@ function ManufacturerList() {
   }, []);
 
   if (!manufacturers) {
-    return <div>Loading models...</div>;
+    return <div>Loading manufacturers...</div>;
   }
 
   return (
-    <div>
-      <h1>Manufacturers</h1>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {manufacturers.map((manufacturer, index) => {
-            return (
-              <tr key={index}>
-                <td>{manufacturer.name}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <div className="container text-left">
+      <div className="container-fluid">
+      <div className="row">
+          <div className="col">
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Manufacturers</h1>
+              <Link to="/manufacturers/new/">
+                <button type="button" className="btn btn-outline-primary d-md-none">+</button>
+                <button type="button" className="btn btn-outline-primary d-none d-md-inline">Add a new manufacturer</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {manufacturers.map((manufacturer, index) => {
+              return (
+                <tr key={index}>
+                  <td>{manufacturer.name}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
