@@ -101,7 +101,7 @@ def api_sales(request):
             content["automobile"] = automobile
 
             employee_id = content["salesperson"]
-            salesperson = Salesperson.objects.get(pk=employee_id)
+            salesperson = Salesperson.objects.get(employee_id=employee_id)
             content["salesperson"] = salesperson
 
             last_name = content["customer"]
