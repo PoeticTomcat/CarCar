@@ -37,7 +37,7 @@ function ManufacturerForm() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3">
+        <div className="col-md-8 offset-md-2">
           <div className="shadow p-4 mt-4">
             <h1>Create a manufacturer</h1>
             <form onSubmit={handleSubmit} id="create-manufacturer-form">
@@ -59,10 +59,10 @@ function ManufacturerForm() {
           </div>
         </div>
       </div>
-      <div className="row justify-content-md-center">
-        <div className="col-auto d-flex justify-content-center mt-3">
+      <div className="col-md-8 offset-md-2 mt-3">
+        <div className="d-flex justify-content-center">
           <Link to="/manufacturers/">
-            <button type="button" className="btn btn-outline-primary">See all manufacturers</button>
+            <button type="button" className="btn btn-outline-secondary">See all manufacturers</button>
           </Link>
         </div>
       </div>
