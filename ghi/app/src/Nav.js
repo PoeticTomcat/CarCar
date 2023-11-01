@@ -13,7 +13,7 @@ function Nav() {
 
             <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" aria-current="page" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manufacturers</NavLink>
               <ul className="dropdown-menu">
-                <li><NavLink className="dropdown-item" aria-current="page" to="manufacturers/"> Manufacturers</NavLink></li>
+                <li><NavLink className="dropdown-item" aria-current="page" to="/manufacturers/"> Manufacturers</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><NavLink className="dropdown-item" aria-current="page" to="/manufacturers/new/">‣ Add a manufacturer</NavLink></li>
               </ul>

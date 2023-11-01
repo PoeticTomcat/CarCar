@@ -23,22 +23,31 @@ function VehicleModelForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:8100/api/models/";
-    const fetchConfig = {
-      method: "post",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const response = await fetch(url, fetchConfig);
 
-    if (response.ok) {
-      setFormData({
-        name: "",
-        picture_url: "",
-        manufacturer_id: "",
-      });
+    try {
+      if (formData.picture_url.length > 255) {
+        throw new Error("Picture URL is too long");
+      }
+
+      const url = "http://localhost:8100/api/models/";
+      const fetchConfig = {
+        method: "post",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(url, fetchConfig);
+
+      if (response.ok) {
+        setFormData({
+          name: "",
+          picture_url: "",
+          manufacturer_id: "",
+        });
+      }
+    } catch (error) {
+      alert(error.message);
     }
   };
 
