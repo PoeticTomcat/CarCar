@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function CustomerForm() {
   const [formData, setFormData] = useState({
@@ -40,9 +41,10 @@ function CustomerForm() {
   };
 
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
+    <div className="container">
+      <div className="row">
+        <div className="col-md-8 offset-md-2">
+          <div className="shadow p-4 mt-4">
           <h1>Create a Customer</h1>
           <form onSubmit={handleSubmit} id="create-customer-form">
             <div className="form-floating mb-3">
@@ -102,6 +104,14 @@ function CustomerForm() {
         </div>
       </div>
     </div>
+    <div className="col-md-8 offset-md-2 mt-3">
+      <div className="d-flex justify-content-center">
+        <Link to="/customers/">
+          <button type="button" className="btn btn-outline-secondary">See all customers</button>
+        </Link>
+      </div>
+    </div>
+  </div>
   );
 }
 

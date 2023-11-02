@@ -55,7 +55,7 @@ function TechnicianList() {
         </tbody>
       </table>
     </div>
-    </div>
+  </div>
   );
 }
 

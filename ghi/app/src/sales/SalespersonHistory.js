@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function SalespersonHistory() {
   const [sales, setSales] = useState([]);
   const [selectedSalesperson, setSelectedSalesperson] = useState(null);
-  const [employees, setEmployees] = useState([]);
   const fetchData = async () => {
     const url = "http://localhost:8090/api/sales/";
     const response = await fetch(url);
@@ -30,9 +30,30 @@ function SalespersonHistory() {
   };
 
   return (
-    <div>
-      <h1>Salesperson History</h1>
-      <label htmlFor="salespersonSelect">Select Salesperson: </label>
+    <div className="container text-left">
+      <div className="container-fluid">
+        <div className="row-auto">
+          <div className="col">
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Salesperson History</h1>
+              <div>
+                <Link to="/sales/new/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">+</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">+ Log a sale</button>
+                </Link>
+                <Link to="/salespeople/new/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">☞</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">☞ Add a salesperson</button>
+                </Link>
+                <Link to="/salespeople/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">▷</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">▷ All salespeople</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      <label htmlFor="salespersonSelect">Select Salesperson:</label>
       <select id="salespersonSelect" onChange={handleSalespersonChange}>
         <option value="">All Salespeople</option>
         {uniqueSalespeople.map((salespersonId, idx) => (
@@ -68,6 +89,7 @@ function SalespersonHistory() {
         </tbody>
       </table>
     </div>
+  </div>
   );
 }
 

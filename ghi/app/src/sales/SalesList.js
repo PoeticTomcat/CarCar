@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function SalesList() {
   const [sales, setSales] = useState([]);
@@ -20,8 +21,29 @@ function SalesList() {
   }
 
   return (
-    <div>
-      <h1>Sales</h1>
+    <div className="container text-left">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Sales</h1>
+              <div>
+                <Link to="/sales/new/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">+</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">+ Log a sale</button>
+                </Link>
+                <Link to="/salespeople/new/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">☞</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">☞ Add a salesperson</button>
+                </Link>
+                <Link to="/sales/history/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">☟</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">☟ Salesperson history</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -47,6 +69,7 @@ function SalesList() {
         </tbody>
       </table>
     </div>
+  </div>
   );
 }
 

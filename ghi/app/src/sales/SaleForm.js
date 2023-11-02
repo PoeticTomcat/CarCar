@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function SaleForm() {
   const [salespeople, setSalespeople] = useState([]);
@@ -99,83 +100,95 @@ function SaleForm() {
   );
 
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
-          <h1>Record a new sale</h1>
-          <form onSubmit={handleSubmit} id="create-sale-form">
-            <div className="form-floating mb-3">
-              <select
-                value={formData.automobile}
-                onChange={handleFormChange}
-                required
-                name="automobile"
-                id="automobile"
-                className="form-select"
-              >
-                <option value="">Choose an Automobile VIN</option>
-                {unsoldAutomobiles.map((automobile) => {
-                  return (
-                    <option key={automobile.vin} value={automobile.vin}>
-                      {automobile.vin}
+    <div className="container">
+      <div className="row">
+        <div className="offset-3 col-6">
+          <div className="shadow p-4 mt-4">
+            <h1>Record a new sale</h1>
+            <form onSubmit={handleSubmit} id="create-sale-form">
+              <div className="form-floating mb-3">
+                <select
+                  value={formData.automobile}
+                  onChange={handleFormChange}
+                  required
+                  name="automobile"
+                  id="automobile"
+                  className="form-select"
+                >
+                  <option value="">Choose an Automobile VIN</option>
+                  {unsoldAutomobiles.map((automobile) => {
+                    return (
+                      <option key={automobile.vin} value={automobile.vin}>
+                        {automobile.vin}
+                      </option>
+                    );
+                  })}
+                </select>
+                <label htmlFor="automobile">Select an Automobile VIN</label>
+              </div>
+              <div className="form-floating mb-3">
+                <select
+                  value={formData.salesperson}
+                  onChange={handleFormChange}
+                  name="salesperson"
+                  id="salesperson"
+                  className="form-select"
+                >
+                  <option value="">Salesperson</option>
+                  {salespeople.map((salesperson) => (
+                    <option
+                      key={salesperson.employee_id}
+                      value={salesperson.employee_id}
+                    >
+                      {salesperson.employee_id}
                     </option>
-                  );
-                })}
-              </select>
-              <label htmlFor="automobile">Select an Automobile VIN</label>
-            </div>
-            <div className="form-floating mb-3">
-              <select
-                value={formData.salesperson}
-                onChange={handleFormChange}
-                name="salesperson"
-                id="salesperson"
-                className="form-select"
-              >
-                <option value="">Salesperson</option>
-                {salespeople.map((salesperson) => (
-                  <option
-                    key={salesperson.employee_id}
-                    value={salesperson.employee_id}
-                  >
-                    {salesperson.employee_id}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor="salesperson">Select a Salesperson</label>
-            </div>
-            <div className="form-floating mb-3">
-              <select
-                value={formData.customer}
-                onChange={handleFormChange}
-                name="customer"
-                id="customer"
-                className="form-select"
-              >
-                <option value="">Customer</option>
-                {customers.map((customer) => (
-                  <option key={customer.last_name} value={customer.last_name}>
-                    {customer.last_name}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor="salesperson">Select a Customer</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                value={formData.price}
-                onChange={handleFormChange}
-                placeholder="Price"
-                required
-                type="number"
-                name="price"
-                id="price"
-                className="form-control"
-              />
-              <label htmlFor="price">Price</label>
-            </div>
-            <button className="btn btn-primary">Create</button>
-          </form>
+                  ))}
+                </select>
+                <label htmlFor="salesperson">Select a Salesperson</label>
+              </div>
+              <div className="form-floating mb-3">
+                <select
+                  value={formData.customer}
+                  onChange={handleFormChange}
+                  name="customer"
+                  id="customer"
+                  className="form-select"
+                >
+                  <option value="">Customer</option>
+                  {customers.map((customer) => (
+                    <option key={customer.last_name} value={customer.last_name}>
+                      {customer.last_name}
+                    </option>
+                  ))}
+                </select>
+                <label htmlFor="salesperson">Select a Customer</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.price}
+                  onChange={handleFormChange}
+                  placeholder="Price"
+                  required
+                  type="number"
+                  name="price"
+                  id="price"
+                  className="form-control"
+                />
+                <label htmlFor="price">Price</label>
+              </div>
+              <button className="btn btn-primary">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div className="col-md-8 offset-md-2 mt-3">
+        <div className="d-flex justify-content-center">
+          <Link to="/sales/">
+            <button type="button" className="btn btn-outline-secondary">All sales</button>
+          </Link>
+          <Link to="/sales/history/">
+            <button type="button" className="btn btn-outline-secondary">Salesperson history</button>
+          </Link>
         </div>
       </div>
     </div>

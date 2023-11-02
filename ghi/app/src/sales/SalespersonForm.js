@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function SalespersonForm() {
   const [formData, setFormData] = useState({
@@ -38,52 +39,64 @@ function SalespersonForm() {
   };
 
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
-          <h1>Create a Salesperson</h1>
-          <form onSubmit={handleSubmit} id="create-salesperson-form">
-            <div className="form-floating mb-3">
-              <input
-                value={formData.first_name}
-                onChange={handleFormChange}
-                placeholder="First Name"
-                required
-                type="text"
-                name="first_name"
-                id="first_name"
-                className="form-control"
-              />
-              <label htmlFor="first_name">First Name</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                value={formData.last_name}
-                onChange={handleFormChange}
-                placeholder="Last Name"
-                required
-                type="text"
-                name="last_name"
-                id="last_name"
-                className="form-control"
-              />
-              <label htmlFor="last_name">Last Name</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                value={formData.employee_id}
-                onChange={handleFormChange}
-                placeholder="employee_id"
-                required
-                type="text"
-                name="employee_id"
-                id="employee_id"
-                className="form-control"
-              />
-              <label htmlFor="employee_id">Employee ID</label>
-            </div>
-            <button className="btn btn-primary">Create</button>
-          </form>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-8 offset-md-2">
+          <div className="shadow p-4 mt-4">
+            <h1>Create a Salesperson</h1>
+            <form onSubmit={handleSubmit} id="create-salesperson-form">
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.first_name}
+                  onChange={handleFormChange}
+                  placeholder="First Name"
+                  required
+                  type="text"
+                  name="first_name"
+                  id="first_name"
+                  className="form-control"
+                />
+                <label htmlFor="first_name">First Name</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.last_name}
+                  onChange={handleFormChange}
+                  placeholder="Last Name"
+                  required
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  className="form-control"
+                />
+                <label htmlFor="last_name">Last Name</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  value={formData.employee_id}
+                  onChange={handleFormChange}
+                  placeholder="employee_id"
+                  required
+                  type="text"
+                  name="employee_id"
+                  id="employee_id"
+                  className="form-control"
+                />
+                <label htmlFor="employee_id">Employee ID</label>
+              </div>
+              <button className="btn btn-primary">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div className="col-md-8 offset-md-2 mt-3">
+        <div className="d-flex justify-content-center">
+          <Link to="/salespeople/">
+            <button type="button" className="btn btn-outline-secondary">All salespeople</button>
+          </Link>
+          <Link to="/sales/history/">
+            <button type="button" className="btn btn-outline-secondary">Salesperson history</button>
+          </Link>
         </div>
       </div>
     </div>
