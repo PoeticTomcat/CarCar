@@ -16,22 +16,10 @@ function Nav() {
             <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/models/">Models</NavLink></li>
             <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/automobiles/">Automobiles</NavLink></li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Technicians</NavLink>
-              <ul className="dropdown-menu">
-                <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/technicians/" >Technicians</NavLink></li>
-                <li><hr className="dropdown-divider" /></li>
-                <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/technicians/new/">‣ Add a Technician</NavLink></li>
-              </ul>
-            </li>
+            <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/technicians/" >Technicians</NavLink></li>
 
-            <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Appointments</NavLink>
-              <ul className="dropdown-menu">
-                <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/appointments/">Appointments</NavLink></li>
-                <li><hr className="dropdown-divider" /></li>
-                <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/appointments/history/">‣ Service History</NavLink></li>
-                <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/appointments/new/" > ‣ Make an Appointment </NavLink></li>
-              </ul>
-            </li>
+            <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/appointments/">Open appointments</NavLink></li>
+            <li className="nav-item"><NavLink className="dropdown-item" aria-current="page" to="/appointments/history/">Service History</NavLink></li>
 
             <li className="nav-item dropdown"><NavLink className="nav-link dropdown-toggle" activeClassName="active" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Salespeople</NavLink>
               <ul className="dropdown-menu">

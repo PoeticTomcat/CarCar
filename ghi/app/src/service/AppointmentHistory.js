@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function AppointmentHistory() {
   const [appointments, setAppointments] = useState([]);
@@ -47,8 +48,25 @@ function AppointmentHistory() {
   }
 
   return (
-    <div>
-      <h1>Service History</h1>
+    <div className="container text-left">
+      <div className="container-fluid">
+        <div className="row-auto">
+          <div className="col">
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Service History</h1>
+              <div>
+                <Link to="/appointments/new/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">+</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">+ Book an appointment</button>
+                </Link>
+                <Link to="/appointments/" className="text-decoration-none">
+                  <button type="button" className="btn btn-outline-primary ml-auto d-lg-none">▷</button>
+                  <button type="button" className="btn btn-outline-primary d-none d-lg-inline">▷ Open appointments</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       <div className="mb-4">
         <form
           className="d-flex"
@@ -91,7 +109,7 @@ function AppointmentHistory() {
                 <td>{appointment.is_vip ? "Yes" : "No"}</td>
                 <td>{appointment.customer}</td>
                 <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
-                <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
+                <td>{new Date(appointment.date_time).toLocaleTimeString([],{hour: "2-digit", minute: "2-digit"})}</td>
                 <td>
                   {appointment.technician.first_name}{" "}
                   {appointment.technician.last_name}
@@ -104,6 +122,7 @@ function AppointmentHistory() {
         </tbody>
       </table>
     </div>
+  </div>
   );
 }
 export default AppointmentHistory;
