@@ -23,9 +23,9 @@ import SaleForm from "./sales/SaleForm";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <div className="container">
+    <BrowserRouter className="d-flex flex-column vh-100">
+      <Nav className="fixed-top" />
+      <div className="container flex-grow-1">
         <Routes>
           <Route path="/" element={<MainPage />} />
 
@@ -37,7 +37,6 @@ function App() {
 
           <Route path="automobiles/" element={<AutomobileList />} />
           <Route path="automobiles/new/" element={<AutomobileForm />} />
-
 
           <Route path="technicians/" element={<TechnicianList />} />
           <Route path="technicians/new/" element={<TechnicianForm />} />
