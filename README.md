@@ -1,11 +1,19 @@
 # CarCar Dealership Online
 CarCar is a microservices-based system developed to manage automobile-related information, services, and sales. The project consists of several microservices including Sales, Service, and Inventory, and a React-based front-end application to interact with these services. 
 
-
 Team:
 
 * Katrine Lombardo - Service
 * Seth Porche - Sales
+
+## Technologies Used
+
+[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
+[![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://www.javascript.com/)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+[![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+
 
 ## Design
 
