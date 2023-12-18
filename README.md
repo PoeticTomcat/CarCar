@@ -1,4 +1,6 @@
-# CarCar
+# CarCar Dealership Online
+CarCar is a microservices-based system developed to manage automobile-related information, services, and sales. The project consists of several microservices including Sales, Service, and Inventory, and a React-based front-end application to interact with these services. 
+
 
 Team:
 
@@ -10,7 +12,13 @@ Team:
 The CarCar app is composed of 7 microservices: Inventory, Service, Sales, Service poller, Sales poller, React, and the Database.
 
 
-## Service microservice
+### Inventory microservice
+The Inventory microservice keeps track of automobile inventory. It contains React components that show list and detail views for automobile manufacturers, vehicle models, and specific automobiles.
+
+The Inventory microservice also include the ability to create, update, and delete automobile manufacturers, vehicle models, and specific automobiles.
+
+
+### Service microservice
 
 The Service functionality uses ports 8080:8000 and keeps track of service appointments for automobiles and their owners.
 
@@ -20,38 +28,68 @@ The RESTful API for each service accommodates POST and GET endpoints for creatin
 
 The poller microservice updates the AutomobileVO every 60 seconds with updated VINs from the Inventory service.
 
-### Models:
-* AutomobileVO:
-    * vin = CharField(max_length=17, unique=True)
-    * sold = BooleanField(default=False)
 
-* Technician:
-    * first_name = CharField(max_length=200)
-    * last_name = CharField(max_length=200)
-    * employee_id = CharField(max_length=200)
+### Sales microservice
 
-* Appointment:
-    * date_time = DateTimeField()
-    * reason = CharField(max_length=100)
-    * status = CharField(max_length=10, default="open")
-    * vin = CharField(max_length=17)
-        :warning:  _This is NOT a ForeignKey to the AutomobileVO._
-    * customer = CharField(max_length=200)
-    * technician = ForeignKey(Technician, on_delete=models.PROTECT)
-    * is_vip = BooleanField(default=False)
-        :warning: _This variable changes to True if an automobile exists in our inventory AND has the sold value = False._
+The models for the Sales microservice are AutomobileVO, Customer, Salesperson, and Sale. AutomobileVO is created to keep an object in the sales microservice that can be called upon when creating a Sale, and the API call to create a sale will change the automobile in the inventory to mark it as "Sold". Customers and Salespeople are created relatively easily, with neither of them having any ForeignKey characteristics they can be created at will using the PUT method. Creating a sale is more complex as it has three foreign keys: Salesperson, Customer, and Automobile. This means that the vehicle in question must be in the inventory, and ALSO not be marked as "Sold" in order to be an option in the drop-down menu of automobiles in the Sale Form.
 
+## Getting Started
 
+Follow these steps to run the Car Car App locally:
 
-## Sales microservice
+1. Clone the GitLab repository:
 
-Order of model creation:
--AutomobileVO: vin and sold
--Salesperson: first_name, last_name, employee_id
--Customer: first_name, last_name, address, phone_number
--Sale: Customer FK, Salesperson FK, Automobile FK, price
+   ```bash
+   git clone https://gitlab.com/katrine-lombardo-public/car-car.git
+   ```
 
-The models I will be creating for the Sales microservice are AutomobileVO, Customer, Salesperson, and Sale. AutomobileVO is created to keep an object in my sales microservice that I can call upon when I am using my functions to create a Sale, and my API call to create a sale will change the automobile in the inventory to mark it as "Sold". Customers and Salespeople are created relatively easily, with neither of them having any ForeignKey characteristics they can be created at will using the PUT method. Creating a sale is more complex as it has three foreign keys: Salesperson, Customer, and Automobile. This means that the vehicle in question must be in the inventory, and ALSO not be marked as "Sold" in order to be an option in the drop-down menu of automobiles in the Sale Form.
+2. Navigate to the project directory:
+
+   ```bash
+   cd car-car
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   # For backend microservices
+   cd backend
+   pip install -r requirements.txt
+   
+   # For the React front-end
+   cd ../frontend
+   npm install
+   ```
+
+4. Configure the PostgreSQL database settings in the respective microservices.
+
+5. Start the microservices:
+
+   ```bash
+   # For Inventory API
+   cd ../inventory-api
+   python app.py
+   
+   # For Service API
+   cd ../service-api
+   python app.py
+   
+   # For Sales API
+   cd ../sales-api
+   python app.py
+   ```
+
+6. Start the React frontend:
+
+   ```bash
+   cd ../frontend
+   npm start
+   ```
+
+7. Open your browser and go to http://localhost:3000 to access CarCar.
+
+Feel free to explore, contribute, and enhance the CarCar experience! If you encounter any issues or have suggestions, please open an issue on this repository.
+
 
 
 ## Helpful API endpoint information
